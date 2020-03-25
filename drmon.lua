@@ -186,7 +186,7 @@ function update()
       statusColor = colors.green
     elseif ri.status == "offline" then
       statusColor = colors.gray
-    elseif ri.status == "charging" then
+    elseif ri.status == "warming_up" then
       statusColor = colors.orange
     end
 
@@ -260,7 +260,7 @@ function update()
     end
 
     -- are we stopping from a shutdown and our temp is better? activate
-    if emergencyTemp == true and ri.status == "stopping" and ri.temperature < safeTemperature then
+    if emergencyTemp == true and ri.status == "cooling_down" and ri.temperature < safeTemperature then
       reactor.activateReactor()
       emergencyTemp = false
     end
